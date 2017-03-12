@@ -15,16 +15,16 @@
         tools:text="MOC Tracker" />
 
     <Button
-        android:id="@+id/start_button"
+        android:id="@+id/newTrack_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/start_label" />
+        android:text="@string/newTrack_label" />
 
     <Button
-        android:id="@+id/stop_button"
+        android:id="@+id/listTracks_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/stop_label" />
+        android:text="@string/listTracks_label" />
 
     <Button
         android:id="@+id/download_button"

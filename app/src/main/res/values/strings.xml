@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">MOC Tracker</string>
     <string name="action_settings">Settings</string>
-    <string name="start_label">Start</string>
-    <string name="stop_label">Stop</string>
+    <string name="newTrack_label">New Track</string>
+    <string name="listTracks_label">List Tracks</string>
     <string name="download_label">Download</string>
     <string name="textview">MOC Tracker</string>
+    <string name="start_label">Start</string>
+    <string name="pause_label">Pause</string>
 </resources>
