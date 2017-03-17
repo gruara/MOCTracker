@@ -10,13 +10,15 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by Andrew on 11/03/2017.
  */
 
 public class NewTrackActivity extends Activity {
-
+    private MOCTrackerDAO datasource;
     private static final String TAG = "AWG NewTrackActivity";
 
     @Override
@@ -26,9 +28,29 @@ public class NewTrackActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newtrack);
 
+        datasource = new MOCTrackerDAO(this);
+        datasource.open();
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = df.format(c.getTime());
+
+        Log.d(TAG, "Track Name = " + formattedDate);
+
+        datasource.createTrack(formattedDate, "Cycling");
+
+
+
         findViewById(R.id.play).setOnClickListener(controller);
         findViewById(R.id.pause).setOnClickListener(controller);
 
+    }
+    @Override
+    protected void onDestroy () {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
     }
     private class Controller implements OnClickListener {
         public void onClick(View view) {
