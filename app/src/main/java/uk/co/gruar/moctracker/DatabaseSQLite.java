@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 import android.util.Log;
 
-
+// TODO: 18/03/2017 Reading Table 
 
 public class DatabaseSQLite extends SQLiteOpenHelper {
     private static final String TAG = "AWG DatabaseSQLite";

@@ -29,13 +29,24 @@ public class MainFragment extends Fragment {
         newTrack_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick");
+                Log.d(TAG, "newTrack_button onClick");
                 Intent intent = new Intent(getActivity(), NewTrackActivity.class);
                 getActivity().startActivity(intent);
             }
 
         });
 
+        View listTracks_button = rootView.findViewById(R.id.listTracks_button);
+
+        listTracks_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "listTracks_button onClick");
+                Intent intent = new Intent(getActivity(), ListTracksActivity.class);
+                getActivity().startActivity(intent);
+            }
+
+        });
 
         return rootView;
     }

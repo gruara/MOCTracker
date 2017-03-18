@@ -7,15 +7,29 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import org.w3c.dom.Comment;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
 /**
  * Created by Andrew on 15/03/2017.
  */
+
+// TODO: 18/03/2017 Get all Tracks
+// TODO: 18/03/2017 Update Track 
+// TODO: 18/03/2017 Store Readings 
+// TODO: 18/03/2017 Get all Readings 
 
 public class MOCTrackerDAO {
 
     private static final String TAG = "AWG MOCTrackerDAO";
     private SQLiteDatabase database;
     private DatabaseSQLite dbHelper;
+
+    private String[] allColumns = { DatabaseSQLite.COLUMN_ID, DatabaseSQLite.COLUMN_TRACK_NAME, DatabaseSQLite.COLUMN_TRACK_DESC };
+
 
     public MOCTrackerDAO(Context context) {
         dbHelper = new DatabaseSQLite(context);
@@ -43,4 +57,35 @@ public class MOCTrackerDAO {
         return insertId;
 
     }
+
+    public List<Track> getTracks () {
+        Log.d(TAG, "getTracks");
+        List<Track> tracks = new ArrayList<Track>();
+
+        Cursor cursor = database.query(DatabaseSQLite.TABLE_TRACK_NAME,
+                allColumns, null, null, null, null, DatabaseSQLite.COLUMN_TRACK_NAME + " DESC", null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Track track = cursorToTrack(cursor);
+            tracks.add(track);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return tracks;
+    }
+
+    private Track cursorToTrack(Cursor cursor) {
+        Log.d(TAG, "cursorToTrack");
+        Track track = new Track();
+        track.setId(cursor.getLong(0));
+        track.setName(cursor.getString(1));
+        track.setDescription(cursor.getString(2));
+        return track;
+    }
+
+
+
+
 }

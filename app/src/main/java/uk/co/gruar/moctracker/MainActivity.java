@@ -10,6 +10,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.util.Log;
 
+// TODO: 18/03/2017 Location management 
+// TODO: 18/03/2017 Timer Service 
+// TODO: 18/03/2017 List Tracks
+// TODO: 18/03/2017 Extract Track 
+// TODO: 18/03/2017 Delete Track
+// TODO: 18/03/2017 Settings 
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "AWG MainActivity";

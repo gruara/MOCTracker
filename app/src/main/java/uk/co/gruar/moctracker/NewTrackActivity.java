@@ -20,6 +20,7 @@ import java.util.Calendar;
 public class NewTrackActivity extends Activity {
     private MOCTrackerDAO datasource;
     private static final String TAG = "AWG NewTrackActivity";
+    public long currentTrack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +40,8 @@ public class NewTrackActivity extends Activity {
 
         Log.d(TAG, "Track Name = " + formattedDate);
 
-        datasource.createTrack(formattedDate, "Cycling");
-
+        currentTrack = datasource.createTrack(formattedDate, "Cycling");
+        Log.d(TAG, "Current Track = " + currentTrack);
 
 
         findViewById(R.id.play).setOnClickListener(controller);
