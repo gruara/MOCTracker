@@ -38,8 +38,25 @@ public class ListTracksActivity extends ListActivity {
 
     }
     @Override
+    protected void onResume() {
+        Log.d(TAG, "onResume");
+        datasource.open();
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d(TAG, "onPause");
+        datasource.close();
+        super.onPause();
+    }
+
+
+    @Override
     protected void onDestroy () {
-        super.onDestroy();
         Log.d(TAG, "onDestroy");
+        datasource.close();
+        super.onDestroy();
     }
 }

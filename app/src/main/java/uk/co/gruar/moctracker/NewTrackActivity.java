@@ -48,11 +48,32 @@ public class NewTrackActivity extends Activity {
         findViewById(R.id.pause).setOnClickListener(controller);
 
     }
+
+    @Override
+    protected void onResume() {
+        Log.d(TAG, "onResume");
+        datasource.open();
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d(TAG, "onPause");
+        datasource.close();
+        super.onPause();
+    }
+
+
+
     @Override
     protected void onDestroy () {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
     }
+
+
+
     private class Controller implements OnClickListener {
         public void onClick(View view) {
             Log.d(TAG, "onClick");
