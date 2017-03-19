@@ -32,9 +32,9 @@ public class Track {
     public void setDescription(String description) {
         this.description = description;
     }
-
     @Override
     public String toString() {
-        return name;
+        // TODO: 19/03/2017 Setting up list needs sorting out
+        return id + " " + name + " " + description;
     }
 }

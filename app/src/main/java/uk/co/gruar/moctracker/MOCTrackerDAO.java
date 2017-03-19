@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import static android.R.attr.id;
+
 /**
  * Created by Andrew on 15/03/2017.
  */
@@ -85,7 +87,12 @@ public class MOCTrackerDAO {
         return track;
     }
 
+    public void deleteTrack(long id) {
+        Log.d(TAG, "deleteTrack");
+        Integer deleted = database.delete(DatabaseSQLite.TABLE_TRACK_NAME, DatabaseSQLite.COLUMN_ID + " = " + id,null);
+        Log.d(TAG, deleted + " track(s) deleted");
 
+    }
 
 
 }
