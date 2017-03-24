@@ -1,6 +1,7 @@
 package uk.co.gruar.moctracker;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -80,23 +81,30 @@ public class NewTrackActivity extends Activity {
             switch(view.getId()) {
                 case R.id.play:
 //                    controlService(true);
-                    showPauseButton();
+                    startTrack();
                     break;
                 case R.id.pause:
 //                    controlService(false);
-                    showPlayButton();
+                    endTrack();
                     break;
             }
         }
     }
-    private void showPauseButton() {
+    private void startTrack() {
         ((Button)findViewById(R.id.play)).setVisibility(View.GONE);
         ((Button)findViewById(R.id.pause)).setVisibility(View.VISIBLE);
+        Context context = this;
+        Intent i= new Intent(context, MOCTrackerService.class);
+        context.startService(i);
     }
 
-    private void showPlayButton() {
+    private void endTrack() {
         ((Button)findViewById(R.id.play)).setVisibility(View.VISIBLE);
         ((Button)findViewById(R.id.pause)).setVisibility(View.GONE);
+        Context context = this;
+        Intent i= new Intent(context, MOCTrackerService.class);
+        context.stopService(i);
+
     }
 
     private Controller controller = new Controller();

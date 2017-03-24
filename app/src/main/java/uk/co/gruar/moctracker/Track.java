@@ -35,6 +35,6 @@ public class Track {
     @Override
     public String toString() {
         // TODO: 19/03/2017 Setting up list needs sorting out
-        return id + " " + name + " " + description;
+        return name + " " + description;
     }
 }
