@@ -49,10 +49,15 @@ public class MOCTrackerService extends Service {
         public void run() {
       /* do what you need to do */
             Log.d(TAG, "Runnable");
+            recordWayPoint();
       /* and here comes the "trick" */
             if (!STOP_TIMER) {
                 handler.postDelayed(this, 1000);
             };
         }
     };
+
+    private void recordWayPoint () {
+        Log.d(TAG, "recordWayPoint");
+    }
 }
